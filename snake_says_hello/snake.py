@@ -1,36 +1,34 @@
+"Showcase pylint errors."
 # Example Python file with intentional Pylint issues
+
+HELLO_NAME = "Bob"
 
 
 def say_hello(name):
+    "Says hello!"
     # Missing docstring
     print(f"Hello, {name}")
 
 
 # Unused variable
-greeting = "Hello, World!"
+GRrETING = "Hello, World!"
 
 # Undefined variable
-print(greet)
+print(GREETING)
 
 # Function call with too many positional arguments
-say_hello("Alice", "Bob")
-
-# Function call with too few positional arguments
-say_hello()
+say_hello("Alice")
 
 
-# Unused parameter
-def unused_param_example(param1, param2):
-    print(param1)
+class ContactSpace:
+    "Sends radio wave into space (this is a lie)"
 
+    def __init__(self):
+        self.space_mode = True
+        self.space_request = "https://www.example.com"
 
-# Variable redefined
-number = 42
-number = "forty-two"
+    def space_radio(self, address, radio_band=None):
+        print("Calling " + address)
 
-
-# Function call with too many positional arguments
-make_request("https://www.example.com", "extra_argument")
-
-# Function call with too few positional arguments
-make_request()  # Missing required argument
+    def turn_on(self):
+        self.space_radio("https://www.example.com", "extra_argument")
