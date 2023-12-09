@@ -13,12 +13,7 @@ def say_hello(name):
 # Unused variable
 GRrETING = "Hello, World!"
 
-# Undefined variableaa
-print(GREETING)
-print(GREETING)
-print(GREETING)
-
-# Function call with too many positional argumentsaddsaaddaaaaa
+# Function call with too many positional argumentsaddsaaddaaaaaaa
 say_hello("Alice")
 
 
