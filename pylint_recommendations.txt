@@ -1,0 +1,10 @@
+************* Module snake
+snake_says_hello\snake.py:14:0: C0103: Constant name "GRrETING" doesn't conform to UPPER_CASE naming style (invalid-name)
+snake_says_hello\snake.py:17:6: E0602: Undefined variable 'GREETING' (undefined-variable)
+snake_says_hello\snake.py:30:4: C0116: Missing function or method docstring (missing-function-docstring)
+snake_says_hello\snake.py:30:35: W0613: Unused argument 'radio_band' (unused-argument)
+snake_says_hello\snake.py:33:4: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 3.57/10 (previous run: 3.57/10, +0.00)
+

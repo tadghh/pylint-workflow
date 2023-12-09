@@ -3,7 +3,7 @@ name: Pylint
 on:
   push:
     paths:
-      - 'snake_says_hello/**' 
+      - "snake_says_hello/**"
 
 jobs:
   build:
@@ -11,48 +11,47 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.10"]
-    env:  
+    env:
       # The folder containing your python files, normally the same one as above
-      PYTHON_FOLDER: 'snake_says_hello'
+      PYTHON_FOLDER: "snake_says_hello"
       #Folder containing your pip requirments file
-      REQUIREMENTS_FOLDER: 'snake_says_hello'
+      REQUIREMENTS_FOLDER: "snake_says_hello"
       #This will be a string in your ReadMe, your recommendations will be appended below it
-      STRING_TO_ADD: 'The following changes should be made.'
+      STRING_TO_ADD: "The following changes should be made."
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r "$REQUIREMENTS_FOLDER/requirements.txt"
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Print Working Directory
-      run: |
-        echo "Current working directory: $PWD"
-      working-directory: ${{ github.workspace }}
-      
-    - name: Run pylint.
-      run: |
-        pylint --fail-under=8.0 "${{ env.PYTHON_FOLDER }}/*.py" > ./pylint_recommendations.txt
-      working-directory: ${{ github.workspace }}
-      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r "$REQUIREMENTS_FOLDER/requirements.txt"
 
-    - name: Overwrite linting recommendations in README.
-      run: |
-        awk '/$STRING_TO_ADD/{print; print "```python"; system("cat pylint_recommendations.txt"); print "```"; exit} 1' README.md > README.md.tmp
-        mv README.md.tmp README.md
-      working-directory: ${{ github.workspace }}
-      continue-on-error: true
+      - name: Print Working Directory
+        run: |
+          echo "Current working directory: $PWD"
+        working-directory: ${{ github.workspace }}
 
-    - name: Commit and push pylint recommendations.
-      run: |
-        git config user.email "actions@github.com"
-        git config user.name "GitHub Actions"
-        git add README.md
-        git diff-index --quiet HEAD || git commit -m "Update README with latest linting recommendations"
-        git push
-      working-directory: ${{ github.workspace }}
+      - name: Run pylint.
+        run: |
+          pylint --fail-under=8.0 "${{ env.PYTHON_FOLDER }}/*.py" > ./pylint_recommendations.txt
+        working-directory: ${{ github.workspace }}
+
+      - name: Overwrite linting recommendations in README.
+        run: |
+          awk '/$STRING_TO_ADD/{print; print "```python"; system("cat pylint_recommendations.txt"); print "```"; exit} 1' README.md > README.md.tmp
+          mv README.md.tmp README.md
+        working-directory: ${{ github.workspace }}
+        continue-on-error: true
+
+      - name: Commit and push pylint recommendations.
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add README.md
+          git diff-index --quiet HEAD || git commit -m "Update README with latest linting recommendations"
+          git push
+        working-directory: ${{ github.workspace }}
