@@ -16,7 +16,7 @@ GRrETING = "Hello, World!"
 # Undefined variableaa
 print(GREETING)
 
-# Function call with too many positional argumentsaddsaa
+# Function call with too many positional argumentsaddsaad
 say_hello("Alice")
 
 
