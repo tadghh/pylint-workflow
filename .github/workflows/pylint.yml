@@ -27,7 +27,8 @@ jobs:
     - name: Print Working Directory
       run: |
         echo "Current working directory: $PWD"
-      working-directory: ${{ github.workspace }
+      working-directory: ${{ github.workspace }}
+      
     - name: List files
       run: |
         echo "List of files in the current path:"
