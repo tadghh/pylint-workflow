@@ -29,10 +29,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r "$REQUIREMENTS_FOLDER/requirements.txt"
-
     - name: Run pylint.
       run: |
-        pylint --fail-under=8.0 "$PYTHON_FOLDER/*.py" > pylint_recommendations.txt
+        pylint --fail-under=8.0 "${{ env.PYTHON_FOLDER }}/*.py" > pylint_recommendations.txt
       working-directory: ${{ github.workspace }}
       continue-on-error: true
 
