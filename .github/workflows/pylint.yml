@@ -29,6 +29,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r "$REQUIREMENTS_FOLDER/requirements.txt"
+
+    - name: Print Working Directory
+      run: |
+        echo "Current working directory: $PWD"
+      working-directory: ${{ github.workspace }}
+      
     - name: Run pylint.
       run: |
         pylint --fail-under=8.0 "${{ env.PYTHON_FOLDER }}/*.py" > pylint_recommendations.txt
