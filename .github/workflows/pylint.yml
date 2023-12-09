@@ -36,22 +36,7 @@ jobs:
         
     - name: Run pylint.
       run: |
-        pylint  "snake_says_hello/*.py" > pylint_recommendations.txt
+        pylint  "snake_says_hello/*.py" 
       working-directory: ${{ github.workspace }}
       
 
-    - name: Overwrite linting recommendations in README.
-      run: |
-        awk '/The following changes should be made./{print; print "```python"; system("cat pylint_recommendations.txt"); print "```"; exit} 1' README.md > README.md.tmp
-        mv README.md.tmp README.md
-      working-directory: ${{ github.workspace }}
-      continue-on-error: true
-
-    - name: Commit and push pylint recommendations.
-      run: |
-        git config user.email "actions@github.com"
-        git config user.name "GitHub Actions"
-        git add README.md
-        git diff-index --quiet HEAD || git commit -m "Update README with latest linting recommendations"
-        git push
-      working-directory: ${{ github.workspace }}
