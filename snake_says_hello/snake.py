@@ -13,7 +13,7 @@ def say_hello(name):
 # Unused variable
 GRrETING = "Hello, World!"
 
-# Function call with too many positional argumentsaddsaaddaaaaaaass
+# Function call with too many positional arguments
 say_hello("Alice")
 
 
