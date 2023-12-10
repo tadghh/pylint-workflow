@@ -12,11 +12,11 @@ jobs:
       matrix:
         python-version: ["3.10"]
     env:
-      # The folder containing your python files, normally the same one as above
+      # The folder containing your python files, normally the same path where push events are monitored
       PYTHON_FOLDER: "snake_says_hello"
-      #Folder containing your pip requirments file
+      # Path to the folder containing your pip requirments file
       REQUIREMENTS_FOLDER: "snake_says_hello"
-      #This will be a string in your ReadMe, your recommendations will be appended below it
+      # This will be a string in your readme, your recommendations will be appended below it and EXISTING content BELOW is OVERWRITTEN
       STRING_TO_ADD: "The following changes should be made."
     steps:
       - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r "$REQUIREMENTS_FOLDER/requirements.txt"
+          pip install -r "${{ env.REQUIREMENTS_FOLDER}}/requirements.txt"
       - name: Run pylint.
         run: |
           pylint -j 0 --fail-under=8.0 "${{ env.PYTHON_FOLDER }}/*.py" > pylint_recommendations.txt
