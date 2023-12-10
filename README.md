@@ -1,7 +1,23 @@
-# pylint-workflow
-Lints python files pushed into a given directory, then updates the repositories ReadMe with the recommendations.
+# Pylint workflow
+Lints python files in a given directory, then updates the repositories ReadMe with the recommendations.
+
+## Setup instructions workflow/action
+*The following permissions are required: workflow read and write access*
+##### Configure the following in the workflow
+- paths: directory to watch for push events
+- python-version: Your projects python version(s)
+- PYTHON_FOLDER: The parent folder containing all your python files
+- REQUIREMENTS_FOLDER: The location of your projects required pip modules
+- STRING_TO_ADD: A string in your readme to add the recommendations below
+
+##### Testing
+- You can use the following [project](https://github.com/nektos/act) to test the action locally
+  - The recent Windows build is broken, use 0.2.51
 
 
+## Example
+
+[![Pylint](https://github.com/tadghh/pylint-workflow/actions/workflows/pylint.yml/badge.svg?branch=main&event=push)](https://github.com/tadghh/pylint-workflow/actions/workflows/pylint.yml)
 
 The following changes should be made.
 ```python
