@@ -1,4 +1,4 @@
-name: Pylint
+name: pylint-update-readme
 #Provide the folder that contains your python files, or /** if they are in the root
 on:
   push:
