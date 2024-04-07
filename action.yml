@@ -1,4 +1,10 @@
 name: pylint-update-readme
+author: 'Tadgh Henry'
+description: "Updates a repository's readme with the output from pylint"
+branding:
+  icon: 'type'
+  color: 'blue'
+
 #Provide the folder that contains your python files, or /** if they are in the root
 on:
   push:
