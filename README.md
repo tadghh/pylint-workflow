@@ -16,8 +16,6 @@ Lints python files in a given directory, then updates the repositories readme wi
 - No files are added to the repository
 ## Testing
 - You can use the following [project](https://github.com/nektos/act) to test the action locally
-  - The recent Windows build is broken, use 0.2.51
-
 
 ## Example
 
